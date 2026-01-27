@@ -7,8 +7,8 @@ on:
       - main
       - feat/*
   pull_request:
-      branches:
-        - main
+    branches:
+      - main
   issues:
     types:
       - opened
