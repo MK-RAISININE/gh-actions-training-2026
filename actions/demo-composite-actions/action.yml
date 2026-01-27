@@ -16,6 +16,7 @@ outputs:
   full-greeting:
     value: ${{steps.last-step.outputs.result}}
 
+
 runs:
   using: "composite"
   steps:
