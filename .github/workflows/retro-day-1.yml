@@ -44,7 +44,7 @@ jobs:
     steps:
       - name: "Step1 of job1 (expectation: Hello MOSEONG)"
         run: echo $VAR2 $MY_NAME
-        if: ${{inputs.myVar1}}
+        if: ${{ inputs.myVar1 == 'true' }}
       - name: "Step2 of job1 (expectation : MOSEONG)"
         run: echo $MY_NAME
 
