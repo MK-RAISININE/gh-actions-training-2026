@@ -18,3 +18,62 @@
 # job2 has only 1 step - you can do here anything you want, e.g. echo "Good morning"
 # Commit the file and run the workflow, check if everything works
 
+name: Retro - day 1 trigger events
+
+on:
+  # Webhook events
+  push:
+    branches:
+      - main
+      - feat/*
+  pull_request:
+    branches:
+      - main
+  issues:
+    types:
+      - opened
+      - closed
+  # Schedule events
+  schedule:
+    - cron: 0 0 * * *
+    - cron: 0 9 * * 0    
+  # Manual events
+  workflow_dispatch:
+    inputs:
+      yourName: 
+        description: Whats your name?
+        required: true
+        default:  My friend
+      areYouFeelingGood:
+        description: Are you feeling good?
+        required: true
+        type: boolean
+      howDoYouFindGithubActions:
+        description: How do you find Github Action?
+        required: false
+        type: choice
+        options:
+          - Awesome
+          - Okay
+          - Na
+
+env:
+  VAR1: "true"
+  VAR2: HELLO
+  MY_NAME: MOSEONG
+
+jobs:
+  job1:
+    runs-on: ubuntu-latest
+    steps:
+      - name: "Greeting step1 (expectation: Hello MOSEONG)"
+        id:  first_step
+        run: |
+          if [ "$VAR1" = "true" ]; then
+            echo $VAR2 $MY_NAME
+          else
+            echo $MY_NAME    
+      - name: "Step2 (expectation : MOSEONG)"
+        if: success()
+        run: echo $MY_NAME
+      
