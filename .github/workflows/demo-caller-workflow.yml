@@ -9,4 +9,5 @@ jobs:
   job2:
     runs-on: ubuntu-latest
     steps:
-      - run: echo Done!
+      - name: done
+        run: echo Done!
