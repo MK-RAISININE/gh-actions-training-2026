@@ -26,7 +26,7 @@ on:
       - main
   workflow_dispatch:
     inputs:
-      myVar1: "true"
+      myVar1:
         type: boolean
         description: Please check
       myVar2:
@@ -44,7 +44,7 @@ jobs:
     steps:
       - name: "Step1 of job1 (expectation: Hello MOSEONG)"
         run: echo $VAR2 $MY_NAME
-        if: ${{ inputs.myVar1 == 'true' }}
+        if: ${{ inputs.myVar1 == 'false' }}
       - name: "Step2 of job1 (expectation : MOSEONG)"
         run: echo $MY_NAME
 
