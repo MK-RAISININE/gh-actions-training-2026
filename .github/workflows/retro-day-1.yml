@@ -29,6 +29,7 @@ on:
       myVar1:
         type: boolean
         description: Please check
+        default: 'true'
       myVar2:
         type: string
         description: Please add some text
