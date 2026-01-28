@@ -24,14 +24,14 @@ on:
   push:
     branches:
       - main
-    workflow_dispatch:
-      input:
-        myVar1:
-          type: boolean
-          description: Please check
-        myVar2:
-          type: string
-          desctiption: Please add some text
+  workflow_dispatch:
+    inputs:
+      myVar1:
+        type: boolean
+        description: Please check
+      myVar2:
+        type: string
+        description: Please add some text
 
 env:
   VAR1: ${{inputs.myVar1}}
@@ -44,7 +44,7 @@ jobs:
     steps:
       - name: "Step1 of job1 (expectation: Hello MOSEONG)"
         run: echo $VAR2 $MY_NAME
-        if: ${{env.VAR1}
+        if: ${{env.VAR1}}
       - name: "Step2 of job1 (expectation : MOSEONG)"
         run: echo $MY_NAME
 
